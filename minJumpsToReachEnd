@@ -1,0 +1,49 @@
+public class HelloWorld{
+
+     public static void main(String []args){
+        
+        
+        int [] arr = {1,4,1,1,1,2,1,1,1};
+        int [] arr1 = {1,4,0,0,1,0,3,0,0};
+        
+        
+        System.out.println(minJumps(arr));
+        
+     }
+     
+     private static int minJumps(int[] arr) {
+         
+         
+         if(arr.length < 1 || arr[0] == 0) {
+             return -1;
+         }
+         
+         
+         int steps = arr[0];
+         int nextStep = arr[0];
+         int jump =1;
+         
+         for(int i =1; i< arr.length; i++) {
+             if(i == arr.length -1) {
+                 return jump;
+             }
+             steps--;
+             nextStep--;
+             
+             nextStep = Math.max(arr[i], nextStep);
+             if(steps ==0) {
+                 
+                 System.out.println(nextStep);
+                 jump++;
+                 steps = nextStep;
+                 if(steps ==0 ) {
+                     return -1;
+                 }
+             }
+             
+             
+         }
+         
+         return jump;
+     };
+}
